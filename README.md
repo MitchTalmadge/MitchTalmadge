@@ -1,6 +1,6 @@
 <h1 align="center">Aloha! 🌺 My name is Mitch.</h1>
 
-💻 I'm a Facebook Production Engineer intern, full-time Computer Science post-graduate student, and aspiring NASA Astronaut. 🚀
+💻 I'm a senior software engineer at <a href="https://conexed.com/">ConexED</a>, full-time Computer Science post-graduate student, and aspiring NASA Astronaut. 🚀
 
 🤙 I have a passion for the Hawaiian culture, and I care deeply about preserving its beautiful language.
 
