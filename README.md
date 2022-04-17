@@ -14,6 +14,6 @@ There is no project so big that I cannot help; I am extremely passionate about w
 
 ---
 
-<img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=MitchTalmadge&show_icons=true&include_all_commits=true&theme=material-palenight" alt="Github Stats" />
+<img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=MitchTalmadge&show_icons=true&include_all_commits=true&theme=default" alt="Github Stats" />
 
 Reach out to me at <a href="mailto:contact@mitchtalmadge.com">contact@mitchtalmadge.com</a>
