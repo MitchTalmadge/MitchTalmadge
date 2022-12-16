@@ -2,7 +2,7 @@
 
 💻 I'm a senior software engineer at <a href="https://conexed.com/">ConexED</a>.
 
-🎓 In 2021 I received my Master of Science in Computer Science degree from the University of Utah
+🎓 In 2021 I received my Master of Science in Computer Science degree from the University of Utah.
 
 🤙 I have a passion for the Hawaiian culture, and I care deeply about preserving its beautiful language.
 
