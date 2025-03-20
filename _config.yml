@@ -3,13 +3,14 @@ email: contact@mitchtalmadge.com
 description: Mitch Talmadge's Portfolio
 baseurl: ""
 url: "https://mitchtalmadge.com"
-github_username:  mitchtalmadge
+github_username: mitchtalmadge
+linkedin_username: mitchtalmadge
 
 theme: minima
 plugins:
   - jekyll-feed
 
-minima:
+minima: # https://github.com/jekyll/minima
   skin: auto
   nav_pages:
     - index.md
