@@ -12,6 +12,7 @@ plugins:
 minima:
   skin: auto
   nav_pages:
+    - index.md
 
 exclude:
   - .sass-cache/
