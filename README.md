@@ -14,6 +14,4 @@
 
 There is no project so big that I cannot help; I am extremely passionate about what I do, and I am ready to dive in and find eloquent solutions to any problem.
 
----
-
 <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=MitchTalmadge&show_icons=true&include_all_commits=true&theme=default" alt="Github Stats" />
