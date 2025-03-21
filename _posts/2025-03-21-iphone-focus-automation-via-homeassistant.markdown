@@ -30,7 +30,9 @@ The primary reason for slow mail is that only iCloud email accounts support "Pus
 
 So, to make this work, I need to send an email to my iCloud address. That should get it to my iPhone the fastest. To test this idea, I set up an automation to listen for emails on my iCloud address, and turn on Sleep focus when one arrives. Then, I sent an email to my iCloud address from my Gmail address. 
 
-Unfortunately, it just straight up doesn't work. Not because the email is too slow (I mean, it takes about 5-10 seconds, which is slow but not horrible)... but because the automation just doesn't run at all. I double and triple checked that everything was correctly configured, but it would never even try to run the automation. [I found a thread on Reddit](https://www.reddit.com/r/shortcuts/comments/1d8g1n7/icloud_mail_doesnt_trigger_automation/) where people were complaining of this happening for iCloud accounts. I have to assume it's just an iOS 18 bug.
+Sadly, the emails do not always come in quickly. Many times, I let my iPhone sit still and it took over 5 minutes before the email showed up (battery saver is disabled, btw). It showed up immediately on my MacBook, though. There were a few rare cases where the iPhone did show the email within about 10 seconds, but I'd really like something faster than that.
+
+Even still, if the emails did come in immediately, it wouldn't matter. The automation just straight up doesn't work, at least on my phone. It just doesn't run at all. I double and triple checked that everything was correctly configured, but it would never even try to run the automation. [I found a thread on Reddit](https://www.reddit.com/r/shortcuts/comments/1d8g1n7/icloud_mail_doesnt_trigger_automation/) where people were complaining of this happening for iCloud accounts. I have to assume it's just an iOS 18 bug.
 
 Moving on to my next idea... Messages?
 
