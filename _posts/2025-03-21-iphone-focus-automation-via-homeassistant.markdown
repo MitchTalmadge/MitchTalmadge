@@ -13,37 +13,12 @@ My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-butt
 That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented:
 
 ![Screenshot 1/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-1.jpeg){: width="300" } 
-![Screenshot 2/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-2.jpeg){: width="300" } 
-![Screenshot 3/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-3.jpeg){: width="300" } 
-![Screenshot 4/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-4.jpeg){: width="300" }
 
-<!-- | Trigger Name         | Example                                    |
-|:---------------------|:-------------------------------------------|
-| Time of Day          | At 8:00 AM, weekdays                       |
-| Alarm                | When my alarm is stopped                   |
-| Sleep                | When Wind Down starts                      |
-| Arrive               | When I arrive at the gym                   |
-| Leave                | When I leave work                          |
-| Before I Commute     | 15 minutes before I leave for work         |
-| CarPlay              | When CarPlay connects                      |
-| Email                | When I get an email from Jane              |
-| Message              | When I get a message from Mom              |
-| Transaction          | When I tap a Wallet Card or Pass           |
-| Apple Watch Workout  | When I start a workout                     |
-| Wi-Fi                | When my iPhone joins home Wi-Fi            |
-| Bluetooth            | When my iPhone connects to AirPods         |
-| NFC                  | When I tap an NFC tag                      |
-| App                  | When 'Weather' is opened or closed         |
-| Airplane Mode        | When Airplane Mode is turned on            |
-| Low Power Mode       | When Low Power Mode is turned off          |
-| Battery Level        | When battery level rises above 50%         |
-| Charger              | When my iPhone connects to power           |
-| Do Not Disturb       | When turning Do Not Disturb on             |
-| Work                 | When turning Work on                       |
-| Driving              | When turning Driving on                    |
-| Reduce Interruptions | When turning Reduce Interruptions on       |
-| Wind Down            | When turning Wind Down on                  |
-| Sound Recognition    | When my iPhone recognizes a doorbell sound | -->
+![Screenshot 2/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-2.jpeg){: width="300" } 
+
+![Screenshot 3/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-3.jpeg){: width="300" } 
+
+![Screenshot 4/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-4.jpeg){: width="300" }
 
 Right away, the only triggers that I can see being useful here are **Email** and **Message**. If I could have Home Assistant either email or text my phone, that should be enough to trigger my shortcut and turn on my Sleep focus...right?
 
