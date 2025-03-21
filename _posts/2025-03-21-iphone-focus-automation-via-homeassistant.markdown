@@ -8,9 +8,13 @@ I have a simple goal: **Make my iPhone go into Sleep focus via some automation i
 
 My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-button) on my bedside table that I click to activate my "good night" routine: turn off the lights, set the thermostat, and (ideally) set my phone to Sleep focus so that notifications don't make sounds.
 
-That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented.
+That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented:
 
-| Trigger Name         | Example                                    |
+| | | | |
+| -- | -- | -- | -- |
+| ![Screenshot 1/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-1.jpeg) | ![Screenshot 2/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-2.jpeg) | ![Screenshot 3/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-3.jpeg) | ![Screenshot 4/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-4.jpeg) | 
+
+<!-- | Trigger Name         | Example                                    |
 |:---------------------|:-------------------------------------------|
 | Time of Day          | At 8:00 AM, weekdays                       |
 | Alarm                | When my alarm is stopped                   |
@@ -36,7 +40,7 @@ That last bit is proving to be a lot harder than I expected. The only way to tur
 | Driving              | When turning Driving on                    |
 | Reduce Interruptions | When turning Reduce Interruptions on       |
 | Wind Down            | When turning Wind Down on                  |
-| Sound Recognition    | When my iPhone recognizes a doorbell sound |
+| Sound Recognition    | When my iPhone recognizes a doorbell sound | -->
 
 Right away, the only triggers that I can see being useful here are **Email** and **Message**. If I could have Home Assistant either email or text my phone, that should be enough to trigger my shortcut and turn on my Sleep focus...right?
 
