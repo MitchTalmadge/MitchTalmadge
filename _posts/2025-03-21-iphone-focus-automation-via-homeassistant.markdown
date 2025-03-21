@@ -6,13 +6,16 @@ categories: home-automation
 
 I have a simple goal: **Make my iPhone go into Sleep focus via some automation in Home Assistant.**
 
+*(TL;DR: I don't have a solution yet. Still trying to figure this out.)*
+
 My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-button) on my bedside table that I click to activate my "good night" routine: turn off the lights, set the thermostat, and (ideally) set my phone to Sleep focus so that notifications don't make sounds.
 
 That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented:
 
-| | | | |
-| -- | -- | -- | -- |
-| ![Screenshot 1/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-1.jpeg) | ![Screenshot 2/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-2.jpeg) | ![Screenshot 3/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-3.jpeg) | ![Screenshot 4/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-4.jpeg) | 
+![Screenshot 1/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-1.jpeg) 
+![Screenshot 2/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-2.jpeg) 
+![Screenshot 3/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-3.jpeg) 
+![Screenshot 4/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-4.jpeg) | 
 
 <!-- | Trigger Name         | Example                                    |
 |:---------------------|:-------------------------------------------|
