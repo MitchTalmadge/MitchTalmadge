@@ -8,7 +8,7 @@ I had a simple goal: **Make my iPhone go into Sleep focus via some automation in
 
 My use case was an [Arre Smart Button](https://arrehome.com/pages/arre-smart-button) on my bedside table that I clicked to activate my "good night" routine: turn off the lights, set the thermostat, and (ideally) set my phone to Sleep focus so that notifications wouldn't make sounds.
 
-That last bit proved to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation was to use the built-in **Shortcuts** app. What I needed was an automation trigger that could be invoked from another server. Here were all of the automation triggers that Apple had implemented:
+That last bit proved to be a lot harder than I expected. The only way from my iPhone to turn on the Sleep focus without relying on time-based automation was to use the built-in **Shortcuts** app. What I needed was an automation trigger that could be invoked from another server. Here were all of the automation triggers that Apple had implemented:
 
 ![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){: width="300" }
 ![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){: width="300" }
