@@ -3,7 +3,9 @@ layout: post
 title:  "Hello Jekyll"
 ---
 
-This is my first time using [Jekyll](https://jekyllrb.com/). I once [created my own blog in Angular](https://github.com/MitchTalmadge/Old-Portfolio), but it became neglected due to its high maintenance costs and my lack of free time with my full-time job and other life obligations. 
+This is my first time using [Jekyll](https://jekyllrb.com/). 
+
+I once [created my own blog in Angular](https://github.com/MitchTalmadge/Old-Portfolio), but it became neglected due to its high maintenance costs and my lack of free time with my full-time job and other life obligations. 
 
 So... today, I am combining [GitHub Pages and Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll), an apparently very popular combination:
 
