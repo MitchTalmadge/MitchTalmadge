@@ -1,0 +1,5 @@
+{
+  "markdown.copyFiles.destination": {
+    "/_posts/**/*": "${documentWorkspaceFolder}/assets/images/${documentBaseName}-${unixTime}.${fileExtName}"
+  }
+}

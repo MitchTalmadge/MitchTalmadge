@@ -3,32 +3,28 @@ layout: post
 title:  "iPhone Focus Automation via Home Assistant"
 categories: home-automation
 ---
-
 I have a simple goal: **Make my iPhone go into Sleep focus via some automation in Home Assistant.**
 
-*(TL;DR: I don't have a solution yet. Still trying to figure this out.)*
+**TL;DR:** Go to #5 for the solution.
 
 My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-button) on my bedside table that I click to activate my "good night" routine: turn off the lights, set the thermostat, and (ideally) set my phone to Sleep focus so that notifications don't make sounds.
 
 That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented:
 
-![Screenshot 1/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-1.jpeg){: width="300" } 
-
-![Screenshot 2/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-2.jpeg){: width="300" } 
-
-![Screenshot 3/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-3.jpeg){: width="300" } 
-
-![Screenshot 4/4 from iPhone of various available automation triggers](/assets//images/2025-03-20-iphone-automations-4.jpeg){: width="300" }
+![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-1.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-2.jpeg){ : width="300" }
 
 Right away, the only triggers that I can see being useful here are **Email** and **Message**. If I could have Home Assistant either email or text my phone, that should be enough to trigger my shortcut and turn on my Sleep focus...right?
 
 # Attempt 1: Email
 
-My main concern with this idea is that emails on my iPhone have **never** arrived quickly. If an app sends me a 6-digit code to sign in, for example, I always have to go into my Mail app and force a refresh before I get the email. Otherwise I'd be sitting there for 5-15 minutes before I get the email. 
+My main concern with this idea is that emails on my iPhone have **never** arrived quickly. If an app sends me a 6-digit code to sign in, for example, I always have to go into my Mail app and force a refresh before I get the email. Otherwise I'd be sitting there for 5-15 minutes before I get the email.
 
 The primary reason for slow mail is that only iCloud email accounts support "Push" notifications in the Mail app; all others must "Fetch" the mail every 15+ minutes. This is why my Gmail messages take forever to come in. From the little research I've done, it sounds like Google does not support Push notifications on third party apps, and instead only allow it on their own Gmail app. Lame...
 
-So, to make this work, I need to send an email to my iCloud address. That should get it to my iPhone the fastest. To test this idea, I set up an automation to listen for emails on my iCloud address, and turn on Sleep focus when one arrives. Then, I sent an email to my iCloud address from my Gmail address. 
+So, to make this work, I need to send an email to my iCloud address. That should get it to my iPhone the fastest. To test this idea, I set up an automation to listen for emails on my iCloud address, and turn on Sleep focus when one arrives. Then, I sent an email to my iCloud address from my Gmail address.
 
 Sadly, the emails do not always come in quickly. Many times, I let my iPhone sit still and it took over 5 minutes before the email showed up (battery saver is disabled, btw). It showed up immediately on my MacBook, though. There were a few rare cases where the iPhone did show the email within about 10 seconds, but I'd really like something faster than that.
 
@@ -50,7 +46,7 @@ While playing with the previous two ideas, I remembered that I can create automa
 
 I was able to create a virtual "switch" in Home Assistant that represents whether I am sleeping or not. I put this into Apple Home, and began creating an automation on it:
 
-![](/assets/images/2025-03-20-iphone-home-automation-1.png)
+![Apple Home automation example](../assets/images/2025-03-20-iphone-home-automation-1.png)
 
 ...but, it's pretty useless. You can't set a focus. You can't run another shortcut. You can't really do *anything* that involves the iPhone itself. I assume that this automation would run on a remote server somewhere, perhaps even on my Apple TV (which tends to serve as a HomeKit hub), and therefore would have no direct access to any of the iPhone features. Lame!
 
@@ -81,16 +77,96 @@ and!!! nothing happened. I had to check the Twilio error logs and saw this:
 
 > Messages sent to US numbers will not be delivered if they are sent from numbers that are not associated with an approved A2P 10DLC Campaign
 
-??? wat? fine. I guess this is [a new thing](https://www.youtube.com/watch?v=KWvbRToRnGg). I don't remember having to do this in the past when using Twilio for SMS. 
+??? wat? fine. I guess this is [a new thing](https://www.youtube.com/watch?v=KWvbRToRnGg). I don't remember having to do this in the past when using Twilio for SMS.
 
 After some research, I learned that this is some new thing to cut down on spam. I have to register with "The Campaign Registry (TCR)" as a sole proprietor, then tell them what I plan to do with the number, who I am messaging, etc... And I have to pay \$2/month to maintain my registration. So this project is now coming out to about \$0.50 for messages, \$2 for the registration, and \$1.15 for the phone number, for a total of \$3.65/month. All so that I can have my iPhone go into sleep mode!! This is so dumb.
 
 If I instead get a "Toll Free" number for \$2.15/month, there is a simpler registration process with no additional monthly fee, so it's more like \$2.65/month for this project instead. So I tried that. But they want a legal entity name, which I do not have. I'm just a person try'na get my phone to change focus!!
 
-Screw this.
+I did end up submitting a registration request to the TCR, but honestly, screw this nonsense. It should not be this hard or costly to just change my iPhone's focus mode.
 
-# Attempt 5: ??? TBD
+# Attempt 5 (Successful!): MacBook, Node-Red, and iCloud Focus Sync 
 
-I am currently out of ideas. If I figure something out, I will update this post. If you know of a solution, feel free to write to me: contact@mitchtalmadge.com
+While researching this problem online, [I came across someone](https://community.home-assistant.io/t/set-ios-focus-mode/571518/2?u=mitchtalmadge) who used Node-Red on a MacBook to set their MacBook focus mode, which would then sync via iCloud as it normally would and set the focus on the iPhone, Apple Watch, etc.
 
-Thanks!
+That's what I ended up doing, and after some trial and error, I made it work.
+
+First, I installed Node-Red on my MacBook using [these instructions](https://nodered.org/docs/getting-started/local), which I will summarize here for posterity:
+
+1. Install via NPM: `sudo npm install -g --unsafe-perm node-red`
+2. Test it out; restart your shell and run `node-red`.
+3. Go to http://127.0.0.1:1880/ and it should be running.
+
+Then I set up Home Assistant to expose my sleep state to MQTT. I have a boolean helper which I turn "on" when my focus should be "Sleep", and "off" when it should be whatever else. With MQTT set up already for other purposes, I just had to add this section to my config:
+
+```yml
+mqtt_statestream:
+  base_topic: homeassistant
+  include:
+    entities:
+      - input_boolean.mitch_asleep
+```
+
+Then I can view the state at `homeassistant/input_boolean/mitch_asleep/state`, which will be either `on` or `off`.
+
+Here's what my Node-Red flow ended up looking like:
+
+![Node-Red flow with an mqtt input that goes into a switch, then into one of two exec configs](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702024205.png)
+
+Basically, when the input value changes on MQTT, it will exec either `shortcuts run sleep:on` or `shortcuts run sleep:off`. However, there was a gotcha that really stumped me for a while. The Node-Red exec action was getting stuck for no apparent reason. It turned out that despite my shortcut not calling for any input, the `shortcuts` command was expecting something from stdin. I ended up changing the command to `: | shortcuts run sleep:on`, which effectively sends nothing to the command's stdin, and it worked!
+
+![Node-Red exec command config](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702468529.png)
+
+For the shortcuts, I used the macOS Shortcuts app to create a new shortcut that sets my focus to "Sleep", like so:
+
+![Shortcuts app example](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702524847.png)
+
+And it works! When I turn my sleep state on in Home Assistant, my MacBook runs the shortcut and my iPhone goes into Sleep focus. It's not instant, but it's pretty quick (around 5 seconds).
+
+## Keeping Node-Red Running
+
+The only problem now is that to run Node-Red, I have to keep a terminal open. To fix this, I set up a "Launch Agent" on my MacBook that runs Node-Red in the background when I login. Here's what worked for me:
+
+1. I put this file at `~/Library/LaunchAgents/org.nodered.plist` (make sure you change out the username for your own). This is basically instructions for macOS to run Node-Red as a service.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>org.nodered</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/node-red</string>
+        <string>--userDir</string>
+        <string>/Users/mitchtalmadge/.node-red</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>/Users/mitchtalmadge/.node-red</string>
+    <key>StandardOutPath</key>
+    <string>/Users/mitchtalmadge/.node-red/node-red.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/mitchtalmadge/.node-red/node-red-error.log</string>
+</dict>
+</plist>
+```
+
+2. Then I activated the service with `launchctl load ~/Library/LaunchAgents/org.nodered.plist` and started it with `launchctl start org.nodered`.
+3. To be sure it was working, I went to http://localhost:1880/ and made sure my flows were still there.
+4. I rebooted my MacBook to make sure it would start up automatically, and it did!
+
+And finally, I don't want my MacBook to go to sleep while this is running, so I made sure that when plugged in, it never sleeps. This is in System Preferences -> Battery -> Options.
+
+![Showing that the "Prevent automatic sleeping on power adapter" option is turned on](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702906579.png)
+
+And that's it! I have a working solution to set my iPhone to Sleep focus via Home Assistant. It's not very simple, but it does give me the option to create other useful automations in the future now that I have Node-Red running.
