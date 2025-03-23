@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "iPhone Focus Automation via Home Assistant"
-categories: home-automation
 ---
 I have a simple goal: **Make my iPhone go into Sleep focus via some automation in Home Assistant.**
 

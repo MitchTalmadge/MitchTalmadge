@@ -1,10 +1,7 @@
 ---
 layout: post
 title:  "Run Node-Red on macOS as a Service"
-categories: home-automation
 ---
-
-
 
 As part of [automating the sleep focus of my iPhone]({% post_url 2025-03-21-iphone-focus-automation-via-homeassistant %}), I needed a way to run [Node-Red](https://nodered.org/) on my Mac as a service so that it would run in the background and start up when I logged into my MacBook. I also wanted to make sure that it ran under my user account instead of root to improve security.
 
