@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Run Node-Red on macOS as a Service"
 ---
 

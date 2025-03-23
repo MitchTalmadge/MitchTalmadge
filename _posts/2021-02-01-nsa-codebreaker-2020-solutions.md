@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "NSA Codebreaker 2020 Solutions"
 author: "Mitch Talmadge"
 date: 2021-02-01T19:57:22.871-0700
 last_modified_at: 2021-02-01T19:57:22.871-0700
-categories: ["Mitch Talmadge"]
 tags: ["programming","hacking","ctf","capture-the-flag","cryptography"]
 description: "I explain my methods to solving the 2020 NSA Codebreaker CTF"
 image:
@@ -16,34 +14,31 @@ image:
 In this post I go through how I solved challenges 1 through 5 of the 2020 NSA Codebreaker CTF (Capture the Flag) . This is a cybersecurity challenge involving reverse engineering, cryptography, and many other technical skills.
 
 In many cases, my solutions will be different from your own. Where possible, the task files are subtly changed for each user so that the resulting answers are slightly different. The premise is the same, though. :)
-### Intro
+## Intro
 
 This CTF takes place around a **fictitious** (read: fake) story about a kidnapping of a journalist. Here is the intro prompt from the challenge, if you are curious:
 
 > Two days ago, a renowned American journalist went missing while on assignment abroad. Although the city where the journalist was last seen has very few surveillance cameras on its streets, local authorities were able to provide us with some surveillance footage taken near the journalist’s hotel during the days leading up to the disappearance. From the footage, we see that the journalist was kidnapped from the front of their hotel and taken away in an unmarked van. Unfortunately, we can also observe the kidnappers destroying the journalist’s mobile phone making it impossible to track their route via GPS. Locals have also reported drone activity in the area leading up to the event. A criminal organization, well known for using drones in their kidnap-for-ransom schemes, has claimed responsibility for the incident. 
-
+> 
 > Your mission is to: 
-
 > 1. Locate the missing journalist and hostage takers’ current position.
- 
-
 > 2. Facilitate the recovery of the journalist and take actions to prevent another incident from happening. 
-
+> 
 > Each task in this year’s challenge will require a range of skills. We need you to call upon all of your technical expertise, your intuition, and your common sense to help us locate and rescue the journalist! 
-
+> 
 > Good luck. We hope you enjoy the challenge! 
 
 Sounds fun! Let’s get started.
-### Task 1: What’s On the Drive?
-#### 10 Points \| Computer Forensics, Command Line, Encryption Tools
+## Task 1: What’s On the Drive?
+### 10 Points \| Computer Forensics, Command Line, Encryption Tools
 
 > In accordance with USSID18, a collection on an American citizen is permitted in cases where the person is reasonably believed to be held captive by a group engaged in international terrorism. As a result, we have obtained a copy of the home directory from the journalist’s laptop and are hoping it will contain information that will help us to locate and rescue the hostage. Your first task is to analyze the data and files available in the journalist’s home directory. 
 
-**Goals:**
+#### Goals:
 1. Find the journalist’s username.
 2. Find the encrypted file in the journalist’s home directory.
 
-**Goal 1: Find the username**
+#### Goal 1: Find the username
 
 We are provided a file called `home.zip` which is an “archive of data from the journalist’s computer.” This is clearly a Linux-based home directory upon extraction. Here is the file structure, which I printed with the `tree` command:
 
@@ -51,19 +46,19 @@ We are provided a file called `home.zip` which is an “archive of data from the
 
 In Linux, each standard user gets their own directory inside `home` , which is named by their username. Thus, the username of this journalist is `NapoleonDovetail374` .
 
-**Goal 2:** **Find the encrypted file**
+#### Goal 2:** **Find the encrypted file
 
 There’s a few ways you could go about this, but I just went the common-sense route. Which of the files in the above picture would you most likely want to encrypt? Probably the file named `pwfile` , which presumably contains a bunch of passwords. To verify that this is the encrypted file and determine how it is encrypted, we can use the `file` command.
 
 ![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*wsxp6ItI7monMULx2B9hZw.png)
 
 Yep, that’s the one!
-### Task 2: Social Engineering
-#### 40 Points \| Computer Forensics, Metadata Analysis, Encryption Tools
+## Task 2: Social Engineering
+### 40 Points | Computer Forensics, Metadata Analysis, Encryption Tools
 
 > The name of the encrypted file you found implies that it might contain credentials for the journalist’s various applications and accounts. Your next task is to find information on the journalist’s computer that will allow you to decrypt this file. 
 
-**Goal: Find the password to decrypt `pwfile`**
+#### Goal: Find the password to decrypt `pwfile`
 
 Ok, this is a very clear goal. We just need to figure out how to decrypt this file. My very first intuition was to look at the `pwHints.txt` file. Who wouldn’t want some password hints? Let’s open it up:
 
@@ -73,7 +68,7 @@ There’s lots of different hints in here, but the important one is the `keychai
 
 Let’s start in the `Pictures/Pets` directory. I found an image there called `shenanigans.jpg` which looks pretty promising:
 
-![just wow](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*3TFEw92iZWK1rDOeszmIug.png)
+![animals wearing party hats and having a birthday party](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*3TFEw92iZWK1rDOeszmIug.png)
 
 just wow
 
@@ -86,7 +81,7 @@ Yep, there it is! This picture was taken on December 28th, 2019 (12/28/19) . We 
 Now we need to find the pet’s name. Nothing in the file names or pictures revealed anything here, so I started reading their blog entries found in `Documents/Blog-Articles` . Check out the one called `blogIntro.txt` :
 
 > Journalist by day. New Blogger by night. Traveler when able. Pet lover…always. 
-
+> 
 > Napoleon here. Welcome to the ‘Diary of an Exotic Furry Voyager’. Outside of work, my two favorite things are traveling the world and getting to come home to **my favorite furry little friend, and the best friend on the planet, Pearl.** This blog is going to account for some of my travels and more importantly, the animals I meet on the way. Hope you enjoy! 
 
 Bingo! This journalist’s pet name is “Pearl.”
@@ -99,12 +94,12 @@ Success! Opening `pwfile.dec` with `vim` reveals that this is an SQLite database
 
 ![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*3IY02HmtbDxG_c9rlPAk2A.png)
 
-### Task 3: Social Engineering
-#### 150 Points \| Computer Forensics, Metadata Analysis, Encryption Tools
+## Task 3: Social Engineering
+### 150 Points \| Computer Forensics, Metadata Analysis, Encryption Tools
 
 > Good news — the decrypted key file includes the journalist’s password for the Stepinator app. A Stepinator is a wearable fitness device that tracks the number of steps a user walks. Tell us the associated username and password for that account. We might be able to use data from that account to track the journalist’s location! 
 
-**Goal: Find the username and password for the Stepinator account**
+#### Goal: Find the username and password for the Stepinator account
 
 Well this sounds like it’ll be easy now that the `pwfile` is decrypted. We know that it’s an SQLite database, so let’s use the `sqlite` command to do some queries:
 
@@ -125,12 +120,12 @@ Awesome! Stepinator has `service` ID 8. Thus, our username and password appear t
 ![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*tb5I7gPzYcxdBZVSc_kjxA.png)
 
 So they’re just ascii85-encoded. Cool! I used [an online tool](https://cryptii.com/pipes/ascii85-encoding) to decode the password, and it turns out to be `PalegreenPearl11030503` . That’s much better — and it was the correct answer!
-### Task 4: Follow That Car!
-#### 500 Points \| Graph Algorithms, Computer Science
+## Task 4: Follow That Car!
+### 500 Points \| Graph Algorithms, Computer Science
 
 > By using the credentials in the decrypted file, we were able to download the journalist’s accelerometer data from their Stepinator device from the time of the kidnapping. Local officials have provided us with a city map and traffic light schedule. Using these along with the journalist’s accelerometer data, find the closest intersection to where the kidnappers took their hostage. 
 
-**Goal: Find the intersection where the kidnappers took the journalist**
+#### Goal: Find the intersection where the kidnappers took the journalist
 
 For this task we are provided 3 files:
 - Relevant information for solving the problem ( `README.txt` )
@@ -140,26 +135,23 @@ For this task we are provided 3 files:
 Here is the `README.txt` contents, if you are interested. Scroll past it for a TL;DR.
 
 > README — Additional Instructions
- 
-
-> \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ 
-
+> 
 > The jounalist was wearing a fitness tracker. Although this device does not capture GPS data, it does capture acceleration data. Perhaps we can use this data to locate and save our victim! 
-
+>
 > Security cameras show where the the journalist was kidnapped and it has been marked on the included city map. The kidnappers then headed directly East. After that, we lost track of them. 
-
+>
 > We have obtained the journalist’s accelerometer data from their fitness tracker app thanks to your success in decrypting their password database. A list of lateral acceleration values (in m/s²) for each second starting at the time of the kidnapping can be found in the `stepinator.json` file. 
-
+>
 > Unfortunately, after about two and a half minutes, the tracker stopped collecting data. 
-
+>
 > We have provided a map of the city streets showing the kidnapping location. Each city block is about 100m long. This map is available as a shapefile as well as a .png image file. 
-
+>
 > Finally, we have obtained the traffic light information for the city. Each intersection has a light, and each light has a cycle of 30 seconds green, 30 seconds red. If a light is green for vehicles traveling through the intersection vertically, it will be red for those traveling horizontally (and vice versa) . The victim was kidnapped just as the lights changed color. Maps showing the traffic lights at certain time intervals are attached. 
-
+>
 > We suspect that the kidnappers obeyed all traffic laws and stayed close to the speed limits. Right turns on red lights are not allowed. The speed limit in the city is 13 m/s. The kidnappers likely slow down when they take a right or left turn. We also believe that the kidnappers would not loop back when driving away — you may assume that once an intersection was traversed, that intersection was not revisited. 
-
+>
 > Finally, since the journalist was kidnapped in the middle of the night, it is safe to assume that there were no other cars on the road. 
-
+>
 > Determine the closest intersection to where the journalist was located when their fitness tracker stopped recording data. 
 
 **TL;DR:**
@@ -213,8 +205,8 @@ Now all that is left to do is open OneNote on my Surface, and start drawing a pa
 ![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*qa9sXf-mejUKsBqFE18uXw.png)
 
 You might be wondering how I decided that they made a right or left turn. Luckily, at each turn, the opposite turn would have run me into a wall or caused other problems which made that turn impossible; so the choice was obvious at each step. However, even if you had only narrowed down the choices to three or so, you do get multiple chances to answer the question, so it’s no big deal.
-### Task 5: Where Has the Drone Been?
-#### 1300 Points \| Reverse Engineering, Cryptography
+## Task 5: Where Has the Drone Been?
+### 1300 Points \| Reverse Engineering, Cryptography
 
 > A rescue team was deployed to the criminal safehouse identified by your efforts. The team encountered resistance but was able to seize the location without causalities. Unfortunately, all of the kidnappers escaped and the hostage was not found. The team did find two important pieces of technology left behind: the journalist’s Stepinator device, and a damaged surveillance drone. An analyst retrieved some encrypted logs as well as part of the drone’s GPS software. Your goal for this task is to identify the location of the criminal organization’s base of operations. 
 
@@ -331,9 +323,9 @@ $GNGGA,054157.013,2307.1261,N,12016.4308,E,1,6,1.93,34.9,M,17.8,M,,*76
 
 And here’s the formatting:
 
-![Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html\# \_gga\_global\_positioning\_system\_fix\_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*6YJXvAn6U5UtyJcC7hdXSQ.png)
+![Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html\# _gga_global_positioning_system_fix_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*6YJXvAn6U5UtyJcC7hdXSQ.png)
 
-Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html\# \_gga\_global\_positioning\_system\_fix\_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)
+Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html\# _gga_global_positioning_system_fix_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)
 
 Look! Latitude and longitude. Look what else! 4 latitude characters (key) and 5 longitude characters (IV) . If you dig into the `main.setup_cipher` code a bit, you will find that it splits on `,` and `.` characters in a couple places. This allows it to extract the first 4 characters of the latitude and the first 5 characters of the longitude (stripping off the decimals) .
 
@@ -346,3 +338,91 @@ The very first block was messed up ( `$EHFKH` is not a valid NMEA header) and I 
 Let’s remember our goal: find the coordinates of the kidnappers’ headquarters. If I had to guess, I’d say that these two newer files are from when the drones were flying around looking for our journalist before the kidnapping. The two older files must be from flights taken at the headquarters.
 
 I suppose that I could try graphing the NMEA files and see if that leads me to their coordinates, but I had an easier idea: bruteforce! It’s only a 4 character key and I don’t need the IV, so I just guessed all values from `0000` to `9999` and checked if the output looked right. Here’s what I wrote:
+
+```go
+package main
+
+import (
+	"crypto/aes"
+	"crypto/cipher"
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
+
+const nmeaLat = "0521"
+const nmeaLong = "02459"
+const logName = "logs/20200628_153027.log"
+
+func main() {
+	decryptKnown()
+	//bruteforce()
+}
+
+func decryptKnown() {
+	ciphertext, err := ioutil.ReadFile(logName)
+	if err != nil {
+		panic(err)
+	}
+	plaintext := make([]byte, len(ciphertext), len(ciphertext))
+
+	key := strings.Repeat(nmeaLat, 4)
+	IV := strings.Repeat(nmeaLong, 3) + "0"
+	block, err := aes.NewCipher([]byte(key))
+	if err != nil {
+		panic(err)
+	}
+
+	cbc := cipher.NewCBCDecrypter(block, []byte(IV))
+	cbc.CryptBlocks(plaintext, ciphertext)
+
+	err = ioutil.WriteFile(logName+".dec", plaintext, 0644)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func bruteforce() {
+	ciphertext, err := ioutil.ReadFile(logName)
+	if err != nil {
+		panic(err)
+	}
+	plaintext := make([]byte, len(ciphertext), len(ciphertext))
+
+	for i := 0; i < 9999; i++ {
+		keyInput := fmt.Sprintf("%04d", i)
+		key := strings.Repeat(keyInput, 4)
+		IV := strings.Repeat("00000", 3) + "0"
+		block, err := aes.NewCipher([]byte(key))
+		if err != nil {
+			panic(err)
+		}
+
+		cbc := cipher.NewCBCDecrypter(block, []byte(IV))
+		cbc.CryptBlocks(plaintext, ciphertext)
+
+		if string(plaintext[28:31]) == ",N," {
+			fmt.Printf("Found key: %s\n", keyInput)
+			return
+		}
+	}
+
+}
+```
+
+
+In less than a second, I had the correct key to the older log files: 0521. Not far off from our original 0513! They must be nearby.
+
+I opened the decrypted log file and obtained these decimal coordinates:
+
+```
+0521.073024 N 02418.706995 W
+```
+
+So now we had our answer; the CTF asks for the answer in the format `##°##'N ##°##'W`, so my answer was `05°21'N 24°18'W`. Auē, that was a lot of work.
+
+---
+
+## Tasks 6-9
+
+I ran out of time for these, but there's lots of solutions on Google. I hope you enjoyed reading my writeup! If you have any questions, feel free to ask. I'm always happy to help.

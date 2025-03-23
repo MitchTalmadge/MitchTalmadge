@@ -2,4 +2,5 @@
   "markdown.copyFiles.destination": {
     "/_posts/**/*": "/assets/images/${documentBaseName}/${unixTime}.${fileExtName}"
   },
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": false
 }

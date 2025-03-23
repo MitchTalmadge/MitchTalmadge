@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Bulk-Export Script for Adobe Illustrator"
 author: "Mitch Talmadge"
 date: 2019-11-27T02:04:49.805-0700
 last_modified_at: 2019-11-27T02:04:49.805-0700
-categories: ["Mitch Talmadge"]
 tags: ["illustrator","adobe","export","programming","design"]
 description: "A little script to automagically export your drawing to PNG, JPG, and SVG in many sizes."
 image:
@@ -57,7 +55,7 @@ SVG
 Nice and organized! I picked the dimensions I use most, but you can of course edit the script and pick the ones you need.
 
 Convinced? Here’s the script and instructions:
-### The Script
+## The Script
 ```jsx
 #target Illustrator
 
@@ -176,7 +174,7 @@ function reopenDocument(document, afile) {
 ```
 
 Save it as a jsx file, such as `Illustrator_Drawing_Exporter.jsx` .
-### Usage / Installation
+## Usage / Installation
 
 There are three ways to use the script.
 1. With an Illustrator drawing already open and in-view, right click on the jsx file and open it with Illustrator. You will be prompted to begin exporting.

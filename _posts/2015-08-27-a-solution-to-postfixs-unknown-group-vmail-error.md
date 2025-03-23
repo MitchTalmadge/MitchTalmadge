@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "A Solution to Postfix's \"unknown group: vmail\" Error"
 author: "Mitch Talmadge"
 date: 2015-08-27T01:05:00.000-0600
 last_modified_at: 2018-05-25T21:12:09.157-0600
-categories: ["Mitch Talmadge"]
 tags: ["other","networking","linux","email","error"]
 description: "My Postfix mail server was giving me yet-another headache. The fix was easy, but took forever to find!"
 ---
@@ -23,7 +21,7 @@ Unsure of where I went wrong, I began to check the `/etc/group` file and the `/e
 With Google being no help, I turned to the Unix & Linux section of StackExchange for help. I posted [a question](http://unix.stackexchange.com/questions/225522/postfix-unknown-group-vmail) and waited, but got no comments or answers after over 24 hours. My question quickly got buried and I decided that I couldn’t sit around and wait any longer.
 
 I was really considering starting over and installing everything again (including Debian), but I decided to give it all one more look-over before I pulled the trigger and wiped everything. While staring blankly at the `/etc/group` file and wondering why the heck nothing was working, I suddenly realized that I had never checked the permissions of the file.
-### Solution:
+## Solution:
 
 I ran `ls -l /etc/group` and… **OMG.** The group file had no world read permissions. This whole time, postfix has been constantly trying to read the group file to check if the group existed, but was **not allowed** to because somewhere in the process of my VPS migration, I accidentally removed all world permissions from the group file. Running `chmod 644 /etc/group` and rebooting my server solved all my problems, and emails began to pile in from the nearly 5-day-old mail queue.
 

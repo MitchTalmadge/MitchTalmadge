@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "How to Download Videos from Canvas"
 author: "Mitch Talmadge"
 date: 2021-02-21T15:10:32.510-0700
 last_modified_at: 2021-02-21T15:11:03.975-0700
-categories: ["Mitch Talmadge"]
 tags: ["canvas","videos","download","university","kaltura"]
 description: "Learn to save Canvas / Kaltura videos as mp4 files so that you can play them on your TV or other devices."
 image:
@@ -16,7 +14,7 @@ If you are like me, then you are a student who prefers watching video lectures o
 In this article, I will show you how to use a tool called **youtube-dl** to download these videos to your hard drive as `mp4` files, which you can then stream to your TV or play on your phone or whatever else you’d like. Despite the fact that “youtube” is in the name, this tool is meant for all kinds of video websites, and we can make it work for Canvas.
 
 _Disclaimer: This process may be in breach of Canvas and/or Kaltura’s TOS, so do this at your own risk. I assume no responsibility for you following these instructions. You should not distribute any videos you may download with this method._
-### 1: Install **youtube-dl**
+## 1: Install **youtube-dl**
 
 First things first, go to [https://github.com/ytdl-org/youtube-dl/releases](https://github.com/ytdl-org/youtube-dl/releases) to get **youtube-dl** . On Windows, download the `youtube-dl.exe` file and place it somewhere easy to find. On Mac, get the `youtube-dl` file and do the same. **This is a command-line program. Don’t double-click it and expect something to show up.**
 
@@ -27,7 +25,7 @@ Once you are in the directory, type `youtube-dl --version` and hit enter. Make s
 ![Example](/assets/images/2021-02-21-how-to-download-videos-from-canvas/1*hlIiM2hTfoHffQd_XyN__g.png)
 
 Example
-### 2: Find the video URL
+## 2: Find the video URL
 
 **youtube-dl** expects the URL of a video to download. Unfortunately you cannot just grab the URL of the page with the video _on_ it and be done. It’s a bit more involved than that.
 
@@ -49,15 +47,15 @@ Right click on it and copy the link address:
 
 ![](/assets/images/2021-02-21-how-to-download-videos-from-canvas/1*Lyizkve6mkf3IGEkCQGzSA.png)
 
-### 3: Initiate the Download
+## 3: Initiate the Download
 
 Now, open the terminal back up and enter the following command:
-```
+```bash
 youtube-dl "PASTE URL HERE" -o DESIRED_NAME.mp4
 ```
 
 Paste the URL inside the quotation marks as shown, and choose the name of the output file. Here’s an example with many parts of the URL stripped out:
-```
+```bash
 youtube-dl "https://...kaltura.com/.../index.m3u8..." -o Lecture1.mp4
 ```
 

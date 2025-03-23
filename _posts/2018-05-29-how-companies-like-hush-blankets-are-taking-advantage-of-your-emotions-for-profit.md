@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "Tough Luck: Using Network Traffic Analysis to Expose a Rigged Coupon Wheel-of-Fortune"
 author: "Mitch Talmadge"
 date: 2018-05-29T20:45:13.530-0600
 last_modified_at: 2020-03-31T20:45:33.752-0600
-categories: ["Mitch Talmadge"]
 tags: ["marketing","hacking","psychology","emotions","networking"]
 description: "I dig into the network traffic behind a Shopify app called \"Wheelio\" that tricks users into believing they won a coupon by luck."
 image:
@@ -88,7 +86,7 @@ Hush Blanket isn’t the only company doing this, either. Take a stroll through 
 Two days later, Wavy Prints took their website offline, presumably because they thought they were hacked.
 
 Karma is a bitch.
-### Update Mar. 31, 2020: Privy Enters the Arena
+## Update Mar. 31, 2020: Privy Enters the Arena
 
 Let’s shame another company! Today one of my readers came across a clothing company called [Pearlfeet](http://pearlfeet.com) which uses a very similar coupon wheel. This one has options like “ **100% Off** ,” “ **Free shipping** ,” and more! However, what I quickly found out is that this wheel is rigged just like the rest. This wheel is not hosted by Wheelio like the other sites, instead it uses a new service called [Privy](https://www.privy.com/spin-to-win-examples) , which also works on Shopify sites.
 

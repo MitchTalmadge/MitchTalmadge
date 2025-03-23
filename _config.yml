@@ -19,6 +19,14 @@ minima: # https://github.com/jekyll/minima
   nav_pages:
     - index.md
 
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+
 comments:
   giscus:
     repo: MitchTalmadge/MitchTalmadge

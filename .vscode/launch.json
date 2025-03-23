@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "ruby_lsp",
+      "request": "launch",
+      "name": "Jekyll",
+      "program": "bundle exec jekyll serve --livereload --drafts",
+    }
+  ]
+}

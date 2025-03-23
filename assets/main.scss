@@ -1,0 +1,37 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import 'minima';
+
+.callout {
+  padding: 1em;
+  margin: 1.5em 0;
+  border-left: 4px solid;
+  border-radius: 4px;
+
+  &.note {
+    border-color: #007acc;
+    background-color: #f0f8ff;
+  }
+
+  &.info {
+    border-color: #17a2b8;
+    background-color: #eaf7fb;
+  }
+
+  &.success {
+    border-color: #28a745;
+    background-color: #eafaf1;
+  }
+
+  &.warning {
+    border-color: #ffc107;
+    background-color: #fff8e1;
+  }
+
+  &.danger {
+    border-color: #dc3545;
+    background-color: #fdecea;
+  }
+}
