@@ -9,6 +9,7 @@ linkedin_username: mitchtalmadge
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-relative-links
   - jekyll-sitemap
 
 minima: # https://github.com/jekyll/minima
