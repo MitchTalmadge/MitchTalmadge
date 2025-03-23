@@ -45,7 +45,7 @@ While playing with the previous two ideas, I remembered that I could create auto
 
 I was able to create a virtual "switch" in Home Assistant that represented whether I was sleeping or not. I put this into Apple Home, and began creating an automation on it:
 
-![Apple Home automation example](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742708692657.png)
+![Apple Home automation example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742708692657.png)
 
 ...but, it was pretty useless. You couldn't set a focus. You couldn't run another shortcut. You couldn't really do **anything** that involved changing the iPhone. I can only guess that this automation would run on a remote server somewhere, perhaps even on my Apple TV (which tended to serve as a HomeKit hub), and therefore would have no direct access to any of the iPhone features. Lame!
 
