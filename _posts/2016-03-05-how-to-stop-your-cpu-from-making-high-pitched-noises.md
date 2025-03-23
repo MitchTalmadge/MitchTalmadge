@@ -20,12 +20,12 @@ I don’t know _how_ it was making the noise (do electrons scream?), but I found
 HKEY_LOCAL_MACHINE \ SYSTEM \ CurrentControlSet \ Control \ Power \ PowerSettings \ 54533251–82be-4824–96c1–47b60b740d00 \ 5d76a2ca-e8c0–402f-a133–2158492d58ad
 ```
 - Change `Attributes` from `1` to `0`
-- In Windows’ Power Settings, change the advanced settings of your plan, find **Processor power management** -\> **Processor idle disable** , and set it to **Disable Idle.** The noise should disappear after hitting **OK** .
+- In Windows’ Power Settings, change the advanced settings of your plan, find **Processor power management** -> **Processor idle disable** , and set it to **Disable Idle.** The noise should disappear after hitting **OK** .
 
 ## In-Depth:
 ### Step 1 — Open Regedit
 
-This is easy enough. Make sure you’re running as an Administrator, push **Windows \+ R** on your keyboard, and type in `regedit` . Push **Enter** and regedit should open.
+This is easy enough. Make sure you’re running as an Administrator, push **Windows + R** on your keyboard, and type in `regedit` . Push **Enter** and regedit should open.
 
 ![](/assets/images/2016-03-05-how-to-stop-your-cpu-from-making-high-pitched-noises/1*s8anuoCIOdpxOSDg4OOnHw.png)
 
@@ -52,7 +52,7 @@ Right click on the `Attributes` value, and select **Modify…** Change `Value Da
 
 ### Step 4 — Change Windows Power Settings
 
-Now we need to change the power settings of Windows so that your CPU doesn’t idle. Open the run dialog again using **Windows \+ R** . This time, type `powercfg.cpl` and hit **Enter.**
+Now we need to change the power settings of Windows so that your CPU doesn’t idle. Open the run dialog again using **Windows + R** . This time, type `powercfg.cpl` and hit **Enter.**
 
 Windows’ **Power Options** should now be open. Just follow these steps:
 - On whichever power plan is selected, click **Change plan settings** . If you use multiple plans, you can repeat this for each plan.

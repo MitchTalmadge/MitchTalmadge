@@ -30,7 +30,7 @@ This CTF takes place around a **fictitious** (read: fake) story about a kidnappi
 
 Sounds fun! Let’s get started.
 ## Task 1: What’s On the Drive?
-### 10 Points \| Computer Forensics, Command Line, Encryption Tools
+### 10 Points | Computer Forensics, Command Line, Encryption Tools
 
 > In accordance with USSID18, a collection on an American citizen is permitted in cases where the person is reasonably believed to be held captive by a group engaged in international terrorism. As a result, we have obtained a copy of the home directory from the journalist’s laptop and are hoping it will contain information that will help us to locate and rescue the hostage. Your first task is to analyze the data and files available in the journalist’s home directory. 
 
@@ -95,7 +95,7 @@ Success! Opening `pwfile.dec` with `vim` reveals that this is an SQLite database
 ![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*3IY02HmtbDxG_c9rlPAk2A.png)
 
 ## Task 3: Social Engineering
-### 150 Points \| Computer Forensics, Metadata Analysis, Encryption Tools
+### 150 Points | Computer Forensics, Metadata Analysis, Encryption Tools
 
 > Good news — the decrypted key file includes the journalist’s password for the Stepinator app. A Stepinator is a wearable fitness device that tracks the number of steps a user walks. Tell us the associated username and password for that account. We might be able to use data from that account to track the journalist’s location! 
 
@@ -121,7 +121,7 @@ Awesome! Stepinator has `service` ID 8. Thus, our username and password appear t
 
 So they’re just ascii85-encoded. Cool! I used [an online tool](https://cryptii.com/pipes/ascii85-encoding) to decode the password, and it turns out to be `PalegreenPearl11030503` . That’s much better — and it was the correct answer!
 ## Task 4: Follow That Car!
-### 500 Points \| Graph Algorithms, Computer Science
+### 500 Points | Graph Algorithms, Computer Science
 
 > By using the credentials in the decrypted file, we were able to download the journalist’s accelerometer data from their Stepinator device from the time of the kidnapping. Local officials have provided us with a city map and traffic light schedule. Using these along with the journalist’s accelerometer data, find the closest intersection to where the kidnappers took their hostage. 
 
@@ -206,7 +206,7 @@ Now all that is left to do is open OneNote on my Surface, and start drawing a pa
 
 You might be wondering how I decided that they made a right or left turn. Luckily, at each turn, the opposite turn would have run me into a wall or caused other problems which made that turn impossible; so the choice was obvious at each step. However, even if you had only narrowed down the choices to three or so, you do get multiple chances to answer the question, so it’s no big deal.
 ## Task 5: Where Has the Drone Been?
-### 1300 Points \| Reverse Engineering, Cryptography
+### 1300 Points | Reverse Engineering, Cryptography
 
 > A rescue team was deployed to the criminal safehouse identified by your efforts. The team encountered resistance but was able to seize the location without causalities. Unfortunately, all of the kidnappers escaped and the hostage was not found. The team did find two important pieces of technology left behind: the journalist’s Stepinator device, and a damaged surveillance drone. An analyst retrieved some encrypted logs as well as part of the drone’s GPS software. Your goal for this task is to identify the location of the criminal organization’s base of operations. 
 
@@ -265,8 +265,8 @@ Let’s finally disassemble the binary and look inside, something I was sort-of 
 
 ![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*Ba1FYVf1AzW8VvSc4vSxPQ.png)
 
-Hey, do you see that? `<go.string.*+0x6fe0>` … This binary was written in golang! This is actually going to end up being obnoxious because golang does a lot of interesting things which make the assembly look fairly different from traditional c-lang type binaries, like c and c\+ \+ . Here’s some of the things I learned while I read through the assembly and scoured Google:
-- golang passes all parameters into functions through the stack. They do not use registers for this, unlike c/c\+ \+ . ( [This will change in golang 1.16 or 1.17](https://github.com/golang/go/issues/40724) )
+Hey, do you see that? `<go.string.*+0x6fe0>` … This binary was written in golang! This is actually going to end up being obnoxious because golang does a lot of interesting things which make the assembly look fairly different from traditional c-lang type binaries, like c and c++ . Here’s some of the things I learned while I read through the assembly and scoured Google:
+- golang passes all parameters into functions through the stack. They do not use registers for this, unlike c/c++ . ( [This will change in golang 1.16 or 1.17](https://github.com/golang/go/issues/40724) )
 - golang functions can return multiple values.
 - golang functions return their values on the stack, not through registers. They do this by placing the return values after all the parameters. So if you pass parameters into a function at `SP + 0x08` and `SP + 0x10` , then expect return values starting at `SP + 0x18` .
 - Strings are returned as two words; a pointer and a length.
@@ -283,9 +283,9 @@ There’s a lot going on here. I can see something which I bet will be valuable,
 
 Here we store to `SP + 8` , `SP + 16` , and `SP + 24` . Then the function is called and we load from `SP + 32` and `SP + 40` . Remember what I was talking about with return values coming after the parameters? 32 comes directly after 24. So it looks like we pass in 3 parameters and get 2 out. Let’s look at the method signature for `strings.Repeat` :
 
-![[https://golang.org/pkg/strings/\#Repeat](https://golang.org/pkg/strings/#Repeat)](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*ML5Bd9oqKJRcS8xHM8zQ4A.png)
+![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*ML5Bd9oqKJRcS8xHM8zQ4A.png)
 
-[https://golang.org/pkg/strings/\#Repeat](https://golang.org/pkg/strings/#Repeat)
+[https://golang.org/pkg/strings/#Repeat](https://golang.org/pkg/strings/#Repeat)
 
 So it takes in a string, and a count of how many times to repeat it. It returns a string. Remember also what I said about strings taking up two slots: a pointer and a length? So `SP + 8` is the input string pointer, `SP + 16` is the input string length, and `SP + 24` is the count.
 
@@ -323,9 +323,9 @@ $GNGGA,054157.013,2307.1261,N,12016.4308,E,1,6,1.93,34.9,M,17.8,M,,*76
 
 And here’s the formatting:
 
-![Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html\# _gga_global_positioning_system_fix_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*6YJXvAn6U5UtyJcC7hdXSQ.png)
+![](/assets/images/2021-02-01-nsa-codebreaker-2020-solutions/1*6YJXvAn6U5UtyJcC7hdXSQ.png)
 
-Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html\# _gga_global_positioning_system_fix_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)
+Truncated a bit. Source: [https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data](https://gpsd.gitlab.io/gpsd/NMEA.html#_gga_global_positioning_system_fix_data)
 
 Look! Latitude and longitude. Look what else! 4 latitude characters (key) and 5 longitude characters (IV) . If you dig into the `main.setup_cipher` code a bit, you will find that it splits on `,` and `.` characters in a couple places. This allows it to extract the first 4 characters of the latitude and the first 5 characters of the longitude (stripping off the decimals) .
 

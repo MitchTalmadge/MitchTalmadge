@@ -53,7 +53,7 @@ Open up the SERVA_ROOT folder you created earlier. You will see that it is now p
 1. Insert the Windows CD into the Host computer.
 2. Create a folder inside SERVA_ROOT/WIA_WDS and name it something that describes the Windows install type. For example: WINDOWS_8_x64.
 3. Open “My Computer” or “This PC” if you are on Windows 8, then right-click on the Windows CD and choose “Open.”
-4. Select all the files inside the CD (Ctrl \+ A) and copy them into the new folder you created.
+4. Select all the files inside the CD (Ctrl + A) and copy them into the new folder you created.
 
 **If you have a Windows ISO File:**
 1. Extract the ISO file into a folder using 7-zip or another extraction utility.
