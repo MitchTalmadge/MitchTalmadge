@@ -64,7 +64,7 @@ Here is how you can set up the service:
 
 You may want to configure your sleep settings to prevent your Mac from sleeping while plugged in, so that Node-Red does not go down. This is in System Preferences -> Battery -> Options:
 
-![Showing that the "Prevent automatic sleeping on power adapter" option is turned on](/assets/images/2025-03-22-node-red-macos-service-1742706740765.png)
+![Showing that the "Prevent automatic sleeping on power adapter" option is turned on](/assets/images/2025-03-22-node-red-macos-service/1742706740765.png)
 
 ---
 

@@ -10,10 +10,10 @@ My use case was an [Arre Smart Button](https://arrehome.com/pages/arre-smart-but
 
 That last bit proved to be a lot harder than I expected. The only way from my iPhone to turn on the Sleep focus without relying on time-based automation was to use the built-in **Shortcuts** app. What I needed was an automation trigger that could be invoked from another server. Here were all of the automation triggers that Apple had implemented:
 
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){: width="300" }
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){: width="300" }
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118651.jpeg){: width="300" }
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118652.jpeg){: width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702118649.jpeg){: width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702118650.jpeg){: width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702118651.jpeg){: width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702118652.jpeg){: width="300" }
 
 Right away, the only triggers that I could see being useful here were **Email** and **Message**. If I could have had Home Assistant either email or text my phone, that should have been enough to trigger my shortcut and turn on my Sleep focus...right?
 
@@ -45,7 +45,7 @@ While playing with the previous two ideas, I remembered that I could create auto
 
 I was able to create a virtual "switch" in Home Assistant that represented whether I was sleeping or not. I put this into Apple Home, and began creating an automation on it.
 
-![A preview of my automation, which has no actions](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742709169936.png)
+![A preview of my automation, which has no actions](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742709169936.png)
 
 ...but, it was pretty useless. You couldn't set a focus. You couldn't run another shortcut. You couldn't really do **anything** that involved changing the iPhone. I can only guess that this automation would run on a remote server somewhere, perhaps even on my Apple TV (which tended to serve as a HomeKit hub), and therefore would have no direct access to any of the iPhone features. Lame!
 
@@ -108,15 +108,15 @@ Then I could view the state at `homeassistant/input_boolean/mitch_asleep/state`,
 
 Here's what my Node-Red flow ended up looking like:
 
-![Node-Red flow with an mqtt input that goes into a switch, then into one of two exec configs](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702052223.png)
+![Node-Red flow with an mqtt input that goes into a switch, then into one of two exec configs](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702052223.png)
 
 Basically, when the input value changed on MQTT, it would exec either `shortcuts run sleep:on` or `shortcuts run sleep:off`. However, there was a gotcha that really stumped me for a while. The Node-Red exec action was getting stuck for no apparent reason. It turned out that despite my shortcut not calling for any input, the `shortcuts` command was expecting something from stdin. I ended up changing the command to `: | shortcuts run sleep:on`, which effectively sent nothing to the command's stdin, and it worked!
 
-![Node-Red exec command config](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702468529.png)
+![Node-Red exec command config](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702468529.png)
 
 For the shortcuts, I used the macOS Shortcuts app to create a new shortcut that set my focus to "Sleep", like so:
 
-![Shortcuts app example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702524847.png)
+![Shortcuts app example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702524847.png)
 
 And it worked! When I turned my sleep state on in Home Assistant, my MacBook ran the shortcut and my iPhone went into Sleep focus. It wasn't instant, but it was pretty quick (around 5 seconds).
 
