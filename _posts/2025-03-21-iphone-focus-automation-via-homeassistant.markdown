@@ -11,10 +11,10 @@ My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-butt
 
 That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented:
 
-![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){ : width="300" }
-![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){ : width="300" }
-![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-1.jpeg){ : width="300" }
-![iPhone Shortcuts automation options](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-2.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-1.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-2.jpeg){ : width="300" }
 
 Right away, the only triggers that I can see being useful here are **Email** and **Message**. If I could have Home Assistant either email or text my phone, that should be enough to trigger my shortcut and turn on my Sleep focus...right?
 
@@ -46,7 +46,7 @@ While playing with the previous two ideas, I remembered that I can create automa
 
 I was able to create a virtual "switch" in Home Assistant that represents whether I am sleeping or not. I put this into Apple Home, and began creating an automation on it:
 
-![Apple Home automation example](../assets/images/2025-03-20-iphone-home-automation-1.png)
+![Apple Home automation example](/assets/images/2025-03-20-iphone-home-automation-1.png)
 
 ...but, it's pretty useless. You can't set a focus. You can't run another shortcut. You can't really do *anything* that involves the iPhone itself. I assume that this automation would run on a remote server somewhere, perhaps even on my Apple TV (which tends to serve as a HomeKit hub), and therefore would have no direct access to any of the iPhone features. Lame!
 
@@ -111,15 +111,15 @@ Then I can view the state at `homeassistant/input_boolean/mitch_asleep/state`, w
 
 Here's what my Node-Red flow ended up looking like:
 
-![Node-Red flow with an mqtt input that goes into a switch, then into one of two exec configs](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702024205.png)
+![Node-Red flow with an mqtt input that goes into a switch, then into one of two exec configs](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702024205.png)
 
 Basically, when the input value changes on MQTT, it will exec either `shortcuts run sleep:on` or `shortcuts run sleep:off`. However, there was a gotcha that really stumped me for a while. The Node-Red exec action was getting stuck for no apparent reason. It turned out that despite my shortcut not calling for any input, the `shortcuts` command was expecting something from stdin. I ended up changing the command to `: | shortcuts run sleep:on`, which effectively sends nothing to the command's stdin, and it worked!
 
-![Node-Red exec command config](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702468529.png)
+![Node-Red exec command config](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702468529.png)
 
 For the shortcuts, I used the macOS Shortcuts app to create a new shortcut that sets my focus to "Sleep", like so:
 
-![Shortcuts app example](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702524847.png)
+![Shortcuts app example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702524847.png)
 
 And it works! When I turn my sleep state on in Home Assistant, my MacBook runs the shortcut and my iPhone goes into Sleep focus. It's not instant, but it's pretty quick (around 5 seconds).
 
@@ -167,6 +167,6 @@ The only problem now is that to run Node-Red, I have to keep a terminal open. To
 
 And finally, I don't want my MacBook to go to sleep while this is running, so I made sure that when plugged in, it never sleeps. This is in System Preferences -> Battery -> Options.
 
-![Showing that the "Prevent automatic sleeping on power adapter" option is turned on](../assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702906579.png)
+![Showing that the "Prevent automatic sleeping on power adapter" option is turned on](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702906579.png)
 
 And that's it! I have a working solution to set my iPhone to Sleep focus via Home Assistant. It's not very simple, but it does give me the option to create other useful automations in the future now that I have Node-Red running.
