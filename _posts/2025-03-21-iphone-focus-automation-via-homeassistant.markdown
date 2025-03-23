@@ -5,7 +5,7 @@ categories: home-automation
 ---
 I have a simple goal: **Make my iPhone go into Sleep focus via some automation in Home Assistant.**
 
-**TL;DR:** Go to #5 for the solution.
+**TL;DR:** [Using Node-Red and an always-on MacBook, I automated my focus state](#attempt-5-successful-macbook-node-red-and-icloud-focus-sync).
 
 My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-button) on my bedside table that I click to activate my "good night" routine: turn off the lights, set the thermostat, and (ideally) set my phone to Sleep focus so that notifications don't make sounds.
 
