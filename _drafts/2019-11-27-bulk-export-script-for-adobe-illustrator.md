@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Bulk-Export Script for Adobe Illustrator"
 author: "Mitch Talmadge"
 date: 2019-11-27T02:04:49.805-0700
@@ -10,30 +11,19 @@ image:
   path: /assets/2019-11-27-bulk-export-script-for-adobe-illustrator/1*4LLTUjaBw4yMA8cFWtjEuQ.png
 ---
 
-### Bulk\-Export Script for Adobe Illustrator
-#### A little script to automagically export your drawing to PNG, JPG, and SVG in many sizes\.
+_Note: This was never tested on a Mac; it was created with Windows. your mileage may vary._
 
-_Note: This was never tested on a Mac; it was created with Windows\. your mileage may vary\._
+I create a lot of logos in Illustrator. The most painful part is always at the end, when I have to export my work to the many formats that life demands. In the past, I would export each size I needed one at a time, or try to make use of the frustrating “Export for Screens” feature. Enough was enough.
 
-I create a lot of logos in Illustrator\. The most painful part is always at the end, when I have to export my work to the many formats that life demands\. In the past, I would export each size I needed one at a time, or try to make use of the frustrating “Export for Screens” feature\. Enough was enough\.
+> The great thing about being an engineer is that if something isn’t exactly how you want it… you just make it exactly how you want it. 
 
+So I did. Here’s a script that takes a logo like this:
 
-> The great thing about being an engineer is that if something isn’t exactly how you want it… you just make it exactly how you want it\. 
-
-
-
-
-So I did\. Here’s a script that takes a logo like this:
-
-
-![](assets/2019-11-27-bulk-export-script-for-adobe-illustrator/1*vBGx3AaHp4qJJN2tP0gXgw.png)
-
+![](/assets/images/2019-11-27-bulk-export-script-for-adobe-illustrator/1*vBGx3AaHp4qJJN2tP0gXgw.png)
 
 … and exports it into something like this:
 
-
-![](assets/2019-11-27-bulk-export-script-for-adobe-illustrator/1*4LLTUjaBw4yMA8cFWtjEuQ.png)
-
+![](/assets/images/2019-11-27-bulk-export-script-for-adobe-illustrator/1*4LLTUjaBw4yMA8cFWtjEuQ.png)
 
 More specifically, the resulting file structure looks like this:
 ```
@@ -64,7 +54,7 @@ SVG
   Drawing.svg
 ```
 
-Nice and organized\! I picked the dimensions I use most, but you can of course edit the script and pick the ones you need\.
+Nice and organized! I picked the dimensions I use most, but you can of course edit the script and pick the ones you need.
 
 Convinced? Here’s the script and instructions:
 ### The Script
@@ -185,17 +175,13 @@ function reopenDocument(document, afile) {
 }
 ```
 
-Save it as a jsx file, such as `Illustrator_Drawing_Exporter.jsx` \.
+Save it as a jsx file, such as `Illustrator_Drawing_Exporter.jsx` .
 ### Usage / Installation
 
-There are three ways to use the script\.
-1. With an Illustrator drawing already open and in\-view, right click on the jsx file and open it with Illustrator\. You will be prompted to begin exporting\.
-2. Inside Illustrator, with the drawing in\-view, go to `File -> Scripts -> Other Script…` and open the jsx file from here\.
-3. To add the script to the `File -> Scripts` menu permanently, open the Illustrator install directory \(you’ll have to find it yourself, it varies\), and put the script inside `Presets/en_US/Scripts` \. Now restart Illustrator and you can use the script at any time from the `File -> Scripts` menu\.
+There are three ways to use the script.
+1. With an Illustrator drawing already open and in-view, right click on the jsx file and open it with Illustrator. You will be prompted to begin exporting.
+2. Inside Illustrator, with the drawing in-view, go to `File -> Scripts -> Other Script…` and open the jsx file from here.
+3. To add the script to the `File -> Scripts` menu permanently, open the Illustrator install directory (you’ll have to find it yourself, it varies), and put the script inside `Presets/en_US/Scripts` . Now restart Illustrator and you can use the script at any time from the `File -> Scripts` menu.
 
-
-Hope this is helpful, let me know if you have questions\!
-
-
-
+Hope this is helpful, let me know if you have questions!
 

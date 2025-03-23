@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "$(…).datetimepicker is not a function (Webpack Fix)"
 author: "Mitch Talmadge"
 date: 2016-11-21T17:03:09.000-0700
@@ -8,13 +9,13 @@ tags: ["programming","webpack","bootstrap","javascript","jquery"]
 description: "I struggled to get a Bootstrap Date-Time Picker to work with Webpack. Luckily, the solution is super easy!"
 ---
 
-### $\(…\) \.datetimepicker is not a function \(Webpack Fix\)
+### $(…) .datetimepicker is not a function (Webpack Fix)
 
 I attempted to install [Eonasdan’s Bootstrap DateTimePicker](https://github.com/Eonasdan/bootstrap-datetimepicker) using webpack, but when I tried to use it, I got this error:
 
 `TypeError: $(…).datetimepicker is not a function`
 
-The problem is that datetimepicker is trying to use its own version of jquery, while the version of jquery used by _everything else_ on the web application was a different version… So the function didn’t exist for the version I was using\. The fix is easy — I just added this to the `resolve` section of my `webpack.config.js`
+The problem is that datetimepicker is trying to use its own version of jquery, while the version of jquery used by _everything else_ on the web application was a different version… So the function didn’t exist for the version I was using. The fix is easy — I just added this to the `resolve` section of my `webpack.config.js`
 ```
 alias: {
     // Force all modules to use the same jquery version.
@@ -22,8 +23,5 @@ alias: {
 }
 ```
 
-That’s it\! \(Credit to the folks on [this GitHub issue](https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1319) for the fix\! \)
-
-
-
+That’s it! (Credit to the folks on [this GitHub issue](https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1319) for the fix! )
 
