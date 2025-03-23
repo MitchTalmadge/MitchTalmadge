@@ -11,10 +11,10 @@ My use case is an [Arre Smart Button](https://arrehome.com/pages/arre-smart-butt
 
 That last bit is proving to be a lot harder than I expected. The only way to turn on the Sleep focus without relying on time-based automation is to use the built-in **Shortcuts** app. What I need is an automation trigger that can be invoked from another server. Here are all of the automation triggers that Apple has implemented:
 
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){ : width="300" }
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){ : width="300" }
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-1.jpeg){ : width="300" }
-![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-2.jpeg){ : width="300" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118649.jpeg){ : width="200" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650.jpeg){ : width="200" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-1.jpeg){ : width="200" }
+![iPhone Shortcuts automation options](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702118650-2.jpeg){ : width="200" }
 
 Right away, the only triggers that I can see being useful here are **Email** and **Message**. If I could have Home Assistant either email or text my phone, that should be enough to trigger my shortcut and turn on my Sleep focus...right?
 
