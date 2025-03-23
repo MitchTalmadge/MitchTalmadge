@@ -76,4 +76,4 @@ Now just repeat steps 2 and 3 for as many videos as you’d like to download\. I
 
 
 
-_[Post](https://medium.com/mitchtalmadge/how-to-download-videos-from-canvas-2021-02-21-how-to-download-videos-from-canvas) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

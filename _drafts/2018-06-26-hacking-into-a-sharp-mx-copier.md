@@ -52,4 +52,4 @@ I was unable to repeat the attack when signed in as a standard user, but I have 
 
 
 
-_[Post](https://medium.com/mitchtalmadge/hacking-into-a-sharp-mx-copier-2018-06-26-hacking-into-a-sharp-mx-copier) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

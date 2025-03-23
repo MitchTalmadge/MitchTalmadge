@@ -26,4 +26,4 @@ That’s it\! \(Credit to the folks on [this GitHub issue](https://github.com/Eo
 
 
 
-_[Post](https://medium.com/mitchtalmadge/datetimepicker-is-not-a-function-webpack-fix-551177a11035) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

@@ -26,4 +26,4 @@ Let me know if you need any help\!
 
 
 
-_[Post](https://medium.com/mitchtalmadge/use-ssh-and-tar-to-backup-your-entire-linux-server-d37445df6b74) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

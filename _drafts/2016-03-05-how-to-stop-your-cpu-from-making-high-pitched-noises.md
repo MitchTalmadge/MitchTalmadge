@@ -93,4 +93,4 @@ I hope this worked for you\! I can finally work peacefully now that this noise i
 
 
 
-_[Post](https://medium.com/mitchtalmadge/how-to-stop-your-cpu-from-making-high-pitched-noises-2016-03-05-how-to-stop-your-cpu-from-making-high-pitched-noises) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

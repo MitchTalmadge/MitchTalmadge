@@ -155,4 +155,4 @@ Very manipulative\.
 
 
 
-_[Post](https://medium.com/mitchtalmadge/how-companies-like-hush-blankets-are-taking-advantage-of-your-emotions-for-profit-2018-05-29-how-companies-like-hush-blankets-are-taking-advantage-of-your-emotions-for-profit) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

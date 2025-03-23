@@ -31,4 +31,4 @@ All done\! :D
 
 
 
-_[Post](https://medium.com/mitchtalmadge/install-the-postgresql-jdbc-driver-on-wildfly-10-2016-07-27-install-the-postgresql-jdbc-driver-on-wildfly-10) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

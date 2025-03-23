@@ -61,4 +61,4 @@ Now DataTables\.net loads up perfectly\.
 
 
 
-_[Post](https://medium.com/mitchtalmadge/using-datatables-net-with-webpack-ea71ba5cf44) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

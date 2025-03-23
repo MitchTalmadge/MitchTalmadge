@@ -30,4 +30,4 @@ I ran `ls -l /etc/group` and… **OMG\.** The group file had no world read permi
 
 
 
-_[Post](https://medium.com/mitchtalmadge/a-solution-to-postfixs-unknown-group-vmail-error-de5f4885d1ee) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+

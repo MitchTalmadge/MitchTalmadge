@@ -176,7 +176,3 @@ That’s it for the Host computer\!
 All that is left to do is install the operating system\!
 
 That’s all there is to it\! If you have any issues, comment below\. :\) Hope this helped\!
-
-
-
-_[Post](https://medium.com/mitchtalmadge/using-serva-to-install-windows-over-your-home-network-2015-07-10-using-serva-to-install-windows-over-your-home-network) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._

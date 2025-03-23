@@ -198,4 +198,4 @@ Hope this is helpful, let me know if you have questions\!
 
 
 
-_[Post](https://medium.com/mitchtalmadge/bulk-export-script-for-adobe-illustrator-2019-11-27-bulk-export-script-for-adobe-illustrator) converted from Medium by [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown)._
+
