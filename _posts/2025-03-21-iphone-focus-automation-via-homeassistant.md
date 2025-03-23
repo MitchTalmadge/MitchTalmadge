@@ -125,48 +125,6 @@ And it works! When I turn my sleep state on in Home Assistant, my MacBook runs t
 
 ## Keeping Node-Red Running
 
-The only problem now is that to run Node-Red, I have to keep a terminal open. To fix this, I set up a "Launch Agent" on my MacBook that runs Node-Red in the background when I login. Here's what worked for me:
+The only problem now is that to run Node-Red, I have to keep a terminal open. Also, when my MacBook goes to sleep, it stops running Node-Red. [Here is how I fixed it.](% post_url 2025-03-22-node-red-macos-service %)
 
-1. I put this file at `~/Library/LaunchAgents/org.nodered.plist` (make sure you change out the username for your own). This is basically instructions for macOS to run Node-Red as a service.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>org.nodered</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/opt/homebrew/bin/node-red</string>
-        <string>--userDir</string>
-        <string>/Users/mitchtalmadge/.node-red</string>
-    </array>
-    <key>EnvironmentVariables</key>
-    <dict>
-        <key>PATH</key>
-        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
-    </dict>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>KeepAlive</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>/Users/mitchtalmadge/.node-red</string>
-    <key>StandardOutPath</key>
-    <string>/Users/mitchtalmadge/.node-red/node-red.log</string>
-    <key>StandardErrorPath</key>
-    <string>/Users/mitchtalmadge/.node-red/node-red-error.log</string>
-</dict>
-</plist>
-```
-
-2. Then I activated the service with `launchctl load ~/Library/LaunchAgents/org.nodered.plist` and started it with `launchctl start org.nodered`.
-3. To be sure it was working, I went to http://localhost:1880/ and made sure my flows were still there.
-4. I rebooted my MacBook to make sure it would start up automatically, and it did!
-
-And finally, I don't want my MacBook to go to sleep while this is running, so I made sure that when plugged in, it never sleeps. This is in System Preferences -> Battery -> Options.
-
-![Showing that the "Prevent automatic sleeping on power adapter" option is turned on](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant-1742702906579.png)
-
-And that's it! I have a working solution to set my iPhone to Sleep focus via Home Assistant. It's not very simple, but it does give me the option to create other useful automations in the future now that I have Node-Red running.
+so...yeah! It's not a very simple solution to my problem, but at least it works, doesn't really cost anything extra, and it gives me the option to create other useful automations in the future now that I have Node-Red running.
