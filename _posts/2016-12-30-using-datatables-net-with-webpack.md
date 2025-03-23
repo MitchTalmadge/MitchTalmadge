@@ -12,7 +12,7 @@ Recently I found a need for installing DataTables.net in my Angular 2 applicatio
 As it turned out, DataTables.net can be used with AMD and CommonJS importers, but Webpack allows loading of either one. AMD is the default loader in DataTables.net, so it was being loaded using the AMD method, when I was trying to load with CommonJS. The solution is to use the `imports-loader` plugin for Webpack to disable the AMD loading support for DataTables.net.
 
 Add this to your `webpack.config.js` :
-```json
+```js
 module: {
     loaders: [
         ...
