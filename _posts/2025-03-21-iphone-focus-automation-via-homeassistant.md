@@ -124,6 +124,6 @@ And it works! When I turn my sleep state on in Home Assistant, my MacBook runs t
 
 ## Keeping Node-Red Running
 
-The only problem now is that to run Node-Red, I have to keep a terminal open. Also, when my MacBook goes to sleep, it stops running Node-Red. [Here is how I fixed it.](% post_url 2025-03-22-node-red-macos-service %)
+The only problem now is that to run Node-Red, I have to keep a terminal open. Also, when my MacBook goes to sleep, it stops running Node-Red. [Here is how I fixed it.]({% post_url 2025-03-22-node-red-macos-service %})
 
 so...yeah! It's not a very simple solution to my problem, but at least it works, doesn't really cost anything extra, and it gives me the option to create other useful automations in the future now that I have Node-Red running.
