@@ -20,7 +20,7 @@ All the components live on the back of the motherboard, except two metal dome sw
 
 ![zoomed in back of the motherboard](/assets/images/2025-04-08-lutron-caseta-pico-teardown/1744142603605.png)
 
-There's also a loop antenna near the bottom of the backside of the board, though it is difficult to make it out. 
+There's also a loop antenna surrounding the entire bottom half of the backside of the board, though it is difficult to make it out. 
 
 ![loop antenna](/assets/images/2025-04-08-lutron-caseta-pico-teardown/1744142680325.png)
 
@@ -38,4 +38,4 @@ From the diagrams, it is clear to me that this chip is very purpose-built for an
 
 Of course if you wanted to make it work with the Lutron system, you'd have to reverse engineer their protocol. I wouldn't be surprised if that info is already on the web.
 
-Anyway, that's a look inside the remote. I'm putting it back together now 🙂 It's going on the wall of my stairwell.
+Anyway, that's a look inside the remote. I'm putting it back together now 🙂 It's going on the wall of my stairwell. If you're interested in seeing more Lutron teardowns, [I found this article on All About Circuits](https://www.allaboutcircuits.com/news/teardown-tuesday-lutron-caseta-wireless-remote/) by Mark Hughes from 2016 that is pretty neat. There's a clearer picture of the loop antenna on the Pico, too.
