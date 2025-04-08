@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Post",
+      "type": "shell",
+      "command": "source ~/.zshrc && bundle exec jekyll serve --livereload --drafts && open http://localhost:4000/${relativeFileDirname}/${fileBasenameNoExtension}.html",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": [],
+    }
+  ]
+}
