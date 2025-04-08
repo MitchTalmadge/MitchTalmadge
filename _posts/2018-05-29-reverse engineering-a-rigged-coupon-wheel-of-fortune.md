@@ -1,5 +1,5 @@
 ---
-title: "Tough Luck: Using Network Traffic Analysis to Expose a Rigged Coupon Wheel-of-Fortune"
+title: "reverse engineering a rigged coupon wheel-of-fortune"
 author: "Mitch Talmadge"
 date: 2018-05-29T20:45:13.530-0600
 last_modified_at: 2020-03-31T20:45:33.752-0600

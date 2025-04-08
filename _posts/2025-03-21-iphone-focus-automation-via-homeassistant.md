@@ -1,5 +1,5 @@
 ---
-title:  "iPhone Focus Automation via Home Assistant"
+title: "iphone focus automation via home assistant"
 ---
 I had a simple goal: **Make my iPhone go into Sleep focus via some automation in Home Assistant.**
 

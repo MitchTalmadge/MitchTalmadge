@@ -1,5 +1,5 @@
 ---
-title: "Hacking Into a SHARP MX Copier"
+title: "hacking into a sharp mx copier"
 author: "Mitch Talmadge"
 date: 2018-06-26T13:52:03.092-0600
 last_modified_at: 2018-06-26T14:04:09.514-0600

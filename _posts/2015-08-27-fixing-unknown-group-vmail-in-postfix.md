@@ -1,5 +1,5 @@
 ---
-title: "A Solution to Postfix's \"unknown group: vmail\" Error"
+title: "fixing `unknown group: vmail` in postfix"
 author: "Mitch Talmadge"
 date: 2015-08-27T01:05:00.000-0600
 last_modified_at: 2018-05-25T21:12:09.157-0600

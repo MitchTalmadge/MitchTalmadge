@@ -1,5 +1,5 @@
 ---
-title: "Install the PostgreSQL JDBC Driver on WildFly 10"
+title: "installing the postgresql jdbc driver on wildfly 10"
 author: "Mitch Talmadge"
 date: 2016-07-27T02:54:42.000-0600
 last_modified_at: 2018-05-25T21:09:19.750-0600

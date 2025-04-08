@@ -1,5 +1,5 @@
 ---
-title: "$(…).datetimepicker is not a function (Webpack Fix)"
+title: "fixing `$(…).datetimepicker is not a function` in webpack"
 author: "Mitch Talmadge"
 date: 2016-11-21T17:03:09.000-0700
 last_modified_at: 2018-05-25T21:06:28.806-0600
@@ -19,5 +19,5 @@ alias: {
 }
 ```
 
-That’s it! (Credit to the folks on [this GitHub issue](https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1319) for the fix! )
+That’s it! (Thanks to the people on [this GitHub issue](https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1319) for the fix)
 

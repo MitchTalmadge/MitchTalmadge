@@ -1,5 +1,5 @@
 ---
-title:  "Hello Jekyll"
+title: "hello jekyll"
 ---
 
 This is my first time using [Jekyll](https://jekyllrb.com/). 

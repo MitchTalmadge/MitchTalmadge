@@ -1,5 +1,5 @@
 ---
-title: "How to Modify Android Emojis (Root Required)"
+title: "modifying android emojis on rooted phones"
 author: "Mitch Talmadge"
 date: 2015-07-28T03:13:18.000-0600
 last_modified_at: 2018-05-25T21:02:11.362-0600

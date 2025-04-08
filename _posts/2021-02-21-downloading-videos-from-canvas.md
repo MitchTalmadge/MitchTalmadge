@@ -1,5 +1,5 @@
 ---
-title: "How to Download Videos from Canvas"
+title: "downloading videos from canvas"
 author: "Mitch Talmadge"
 date: 2021-02-21T15:10:32.510-0700
 last_modified_at: 2021-02-21T15:11:03.975-0700

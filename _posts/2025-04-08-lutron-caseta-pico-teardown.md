@@ -1,5 +1,5 @@
 ---
-title:  "Lutron Caséta Pico Teardown"
+title: "lutron caséta pico teardown"
 ---
 
 ![the remote](/assets/images/2025-04-08-lutron-caseta-pico-teardown/1744142366476.png)

@@ -1,5 +1,5 @@
 ---
-title: "Bulk-Export Script for Adobe Illustrator"
+title: "bulk-export script for adobe illustrator"
 author: "Mitch Talmadge"
 date: 2019-11-27T02:04:49.805-0700
 last_modified_at: 2019-11-27T02:04:49.805-0700

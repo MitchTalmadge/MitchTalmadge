@@ -1,5 +1,5 @@
 ---
-title: "Using DataTables.net with Webpack"
+title: "using datatables.net with webpack"
 author: "Mitch Talmadge"
 date: 2016-12-30T19:02:31.000-0700
 last_modified_at: 2018-05-25T21:04:58.225-0600

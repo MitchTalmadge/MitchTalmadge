@@ -1,5 +1,5 @@
 ---
-title: "How to Stop Your CPU From Making High Pitched Noises"
+title: "stopping my cpu from making high pitched noises"
 author: "Mitch Talmadge"
 date: 2016-03-05T22:23:45.000-0700
 last_modified_at: 2018-05-25T21:08:17.470-0600

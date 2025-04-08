@@ -1,5 +1,5 @@
 ---
-title: "Use SSH and tar to Backup Your Entire Linux Server"
+title: "using ssh and tar to backup my entire linux server"
 author: "Mitch Talmadge"
 date: 2016-06-23T03:20:44.000-0600
 last_modified_at: 2019-04-18T02:10:55.287-0600

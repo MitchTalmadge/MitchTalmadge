@@ -1,5 +1,5 @@
 ---
-title: "Using SERVA to Install Windows over your Home Network"
+title: "using serva to install windows over your home network"
 author: "Mitch Talmadge"
 date: 2015-07-10T02:31:19.000-0600
 last_modified_at: 2018-05-25T21:16:06.777-0600

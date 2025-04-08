@@ -1,5 +1,5 @@
 ---
-title: "NSA Codebreaker 2020 Solutions"
+title: "nsa codebreaker 2020 solutions"
 author: "Mitch Talmadge"
 date: 2021-02-01T19:57:22.871-0700
 last_modified_at: 2021-02-01T19:57:22.871-0700
