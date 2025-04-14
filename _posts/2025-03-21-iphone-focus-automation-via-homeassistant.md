@@ -115,9 +115,13 @@ Basically, when the input value changed on MQTT, it would exec either `shortcuts
 
 For the shortcuts, I used the macOS Shortcuts app to create a new shortcut that set my focus to "Sleep", like so:
 
-![Shortcuts app example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702524847.png)
+![sleep:on shortcut example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1742702524847.png)
 
-And it worked! When I turned my sleep state on in Home Assistant, my MacBook ran the shortcut and my iPhone went into Sleep focus. It wasn't instant, but it was pretty quick (around 5 seconds).
+For the `sleep:off` shortcut, I added a check to make sure the focus was currently on, because I think Node-Red would run this shortcut at random times during the day and it would wipe whatever focus my phone was currently in (my guess is that the wifi renegotiating would act like an MQTT state change).
+
+![sleep:off shortcut example](/assets/images/2025-03-21-iphone-focus-automation-via-homeassistant/1744602143777.png)
+
+And it all worked! When I turned my sleep state on in Home Assistant, my MacBook ran the shortcut and my iPhone went into Sleep focus. It wasn't instant, but it was pretty quick (around 5 seconds).
 
 ## Keeping Node-Red Running
 
