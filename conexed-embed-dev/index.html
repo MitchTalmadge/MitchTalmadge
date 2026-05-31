@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue River Community College</title>
+    <meta name="description" content="Blue River Community College — affordable, accessible higher education for the Pacific Northwest.">
+
+    <style>
+        :root {
+            --brc-navy: #0d2c54;
+            --brc-river: #1d6fa5;
+            --brc-river-light: #4ea3d8;
+            --brc-sand: #f4f1ea;
+            --brc-ink: #1a1a1a;
+            --brc-muted: #5b6470;
+            --brc-rule: #d9dde3;
+            --brc-accent: #d4781f;
+        }
+
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--brc-ink);
+            line-height: 1.55;
+            background: #fff;
+        }
+        a { color: var(--brc-river); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Top utility bar */
+        .utility-bar {
+            background: var(--brc-navy);
+            color: #fff;
+            font-size: 13px;
+        }
+        .utility-bar .inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 8px 24px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+        .utility-bar a { color: #cfe2f3; }
+        .utility-bar a:hover { color: #fff; text-decoration: none; }
+
+        /* Header */
+        header.site-header {
+            background: #fff;
+            border-bottom: 1px solid var(--brc-rule);
+        }
+        .header-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--brc-navy);
+        }
+        .brand svg { width: 44px; height: 44px; flex-shrink: 0; }
+        .brand .wordmark {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            line-height: 1.1;
+            font-weight: 600;
+            color: var(--brc-navy);
+        }
+        .brand .tagline {
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--brc-muted);
+        }
+        nav.primary ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 28px;
+        }
+        nav.primary a {
+            color: var(--brc-ink);
+            font-weight: 500;
+            font-size: 15px;
+            padding: 8px 0;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+        nav.primary a:hover {
+            color: var(--brc-river);
+            border-bottom-color: var(--brc-river);
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--brc-navy) 0%, var(--brc-river) 100%);
+            color: #fff;
+            padding: 88px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -100px;
+            top: -100px;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr minmax(240px, 420px);
+            gap: 32px 48px;
+            align-items: center;
+        }
+        .hero-illustration {
+            justify-self: end;
+            align-self: end;
+            margin-bottom: -24px;
+        }
+        .hero-illustration img {
+            display: block;
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.22));
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.14);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 0 0 18px;
+            max-width: 780px;
+            font-weight: 600;
+        }
+        .hero p.lede {
+            font-size: 19px;
+            max-width: 640px;
+            margin: 0 0 32px;
+            color: #e9f2fa;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 13px 26px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: transform 80ms ease;
+        }
+        .btn:hover { text-decoration: none; transform: translateY(-1px); }
+        .btn-primary {
+            background: var(--brc-accent);
+            color: #fff;
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* Quick links strip */
+        .quicklinks {
+            background: var(--brc-sand);
+            border-bottom: 1px solid var(--brc-rule);
+        }
+        .quicklinks-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 22px 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .quicklink {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: #fff;
+            border: 1px solid var(--brc-rule);
+            border-radius: 6px;
+            color: var(--brc-ink);
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .quicklink:hover { border-color: var(--brc-river); text-decoration: none; }
+        .quicklink .icon {
+            width: 32px; height: 32px;
+            background: var(--brc-river-light);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Sections */
+        section.content {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 72px 24px;
+        }
+        section.content h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 32px;
+            color: var(--brc-navy);
+            margin: 0 0 12px;
+            font-weight: 600;
+        }
+        section.content .section-lede {
+            font-size: 17px;
+            color: var(--brc-muted);
+            max-width: 720px;
+            margin: 0 0 36px;
+        }
+
+        /* Programs grid */
+        .programs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .program {
+            border: 1px solid var(--brc-rule);
+            border-radius: 8px;
+            padding: 28px;
+            transition: border-color 120ms ease, transform 120ms ease;
+        }
+        .program:hover {
+            border-color: var(--brc-river);
+            transform: translateY(-2px);
+        }
+        .program .badge {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--brc-river);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .program h3 {
+            font-size: 19px;
+            margin: 0 0 8px;
+            color: var(--brc-navy);
+        }
+        .program p {
+            color: var(--brc-muted);
+            margin: 0 0 14px;
+            font-size: 15px;
+        }
+        .program a.more {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Important dates */
+        .alt-section { background: var(--brc-sand); }
+        .dates {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .date-card {
+            background: #fff;
+            border-left: 4px solid var(--brc-accent);
+            padding: 22px 24px;
+            border-radius: 4px;
+        }
+        .date-card .when {
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--brc-muted);
+            font-weight: 600;
+        }
+        .date-card .what {
+            font-size: 17px;
+            color: var(--brc-navy);
+            margin: 6px 0 0;
+            font-weight: 600;
+        }
+        .date-card .desc {
+            font-size: 14px;
+            color: var(--brc-muted);
+            margin: 6px 0 0;
+        }
+
+        /* CTA strip */
+        .cta-strip {
+            background: var(--brc-navy);
+            color: #fff;
+            padding: 56px 24px;
+            text-align: center;
+        }
+        .cta-strip h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 30px;
+            margin: 0 0 12px;
+            color: #fff;
+        }
+        .cta-strip p {
+            margin: 0 0 24px;
+            color: #cfe2f3;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1d3a;
+            color: #cfe2f3;
+            padding: 48px 24px 24px;
+            font-size: 14px;
+        }
+        .footer-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        footer h4 {
+            color: #fff;
+            margin: 0 0 12px;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        footer ul { list-style: none; padding: 0; margin: 0; }
+        footer li { margin: 6px 0; }
+        footer a { color: #cfe2f3; }
+        .footer-meta {
+            max-width: 1180px;
+            margin: 32px auto 0;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #8aa5c2;
+        }
+
+        @media (max-width: 880px) {
+            .header-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
+            nav.primary ul { flex-wrap: wrap; gap: 16px; }
+            .hero { padding: 56px 24px; }
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+            .hero-illustration {
+                justify-self: center;
+                margin-bottom: 0;
+                max-width: 320px;
+            }
+            .hero h1 { font-size: 34px; }
+            .quicklinks-inner { grid-template-columns: repeat(2, 1fr); }
+            .programs, .dates { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="utility-bar">
+    <div class="inner">
+        <a href="#">MyBlueRiver Portal</a>
+        <a href="#">Canvas</a>
+        <a href="#">Library</a>
+        <a href="#">Directory</a>
+        <a href="#">Apply</a>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="/">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" fill="#0d2c54"/>
+                <path d="M10 38 Q22 30 32 38 T54 38" stroke="#4ea3d8" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M10 46 Q22 38 32 46 T54 46" stroke="#4ea3d8" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+                <text x="32" y="26" text-anchor="middle" fill="#fff" font-family="Georgia, serif" font-size="14" font-weight="600">BR</text>
+            </svg>
+            <div>
+                <div class="wordmark">Blue River<br>Community College</div>
+                <div class="tagline">Est. 1968 · Cascadia, OR</div>
+            </div>
+        </a>
+        <nav class="primary" aria-label="Primary navigation">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Academics</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#cost">Tuition &amp; Aid</a></li>
+                <li><a href="#student-life">Student Life</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <span class="hero-eyebrow">Fall 2026 enrollment is open</span>
+            <h1>Higher education that fits your life — and your budget.</h1>
+            <p class="lede">
+                Blue River Community College serves more than 11,000 students across
+                three campuses with associate degrees, professional-technical certificates,
+                and seamless transfer to Oregon's four-year universities.
+            </p>
+            <div class="hero-ctas">
+                <a href="#admissions" class="btn btn-primary">Apply for Fall 2026</a>
+                <a href="#programs" class="btn btn-secondary">Explore Programs</a>
+            </div>
+        </div>
+        <div class="hero-illustration" aria-hidden="true">
+            <img src="otter-hero.png" alt="" width="1000" height="782">
+        </div>
+    </div>
+</section>
+
+<div class="quicklinks">
+    <div class="quicklinks-inner">
+        <a class="quicklink" href="#"><span class="icon">$</span><span>Financial Aid &amp; Scholarships</span></a>
+        <a class="quicklink" href="#"><span class="icon">📅</span><span>Class Schedule</span></a>
+        <a class="quicklink" href="#"><span class="icon">📝</span><span>Register for Classes</span></a>
+        <a class="quicklink" href="#"><span class="icon">🎓</span><span>Transfer to a 4-Year</span></a>
+    </div>
+</div>
+
+<section class="content" id="programs">
+    <h2>Featured programs</h2>
+    <p class="section-lede">
+        Choose from over 80 transfer degrees and career-technical programs designed
+        with input from regional employers and Oregon's public universities.
+    </p>
+    <div class="programs">
+        <div class="program">
+            <span class="badge">Career Technical</span>
+            <h3>Nursing (RN)</h3>
+            <p>Two-year ADN program with clinical placements at PeaceHealth, Sacred Heart, and McKenzie-Willamette. NCLEX pass rate: 96%.</p>
+            <a class="more" href="#">Program details →</a>
+        </div>
+        <div class="program">
+            <span class="badge">Transfer</span>
+            <h3>Computer Science AAOT</h3>
+            <p>Articulated transfer pathway to Oregon State, U of O, and Portland State. Includes intro programming, data structures, and discrete math.</p>
+            <a class="more" href="#">Program details →</a>
+        </div>
+        <div class="program">
+            <span class="badge">Career Technical</span>
+            <h3>Welding Technology</h3>
+            <p>One-year certificate or two-year AAS. AWS-certified instructors, MIG/TIG/SMAW labs, and direct connections to local fabricators.</p>
+            <a class="more" href="#">Program details →</a>
+        </div>
+        <div class="program">
+            <span class="badge">Transfer</span>
+            <h3>Business Administration</h3>
+            <p>Accounting, management, and entrepreneurship tracks. Transferable to all OUS business schools and most regional private universities.</p>
+            <a class="more" href="#">Program details →</a>
+        </div>
+        <div class="program">
+            <span class="badge">Career Technical</span>
+            <h3>Early Childhood Education</h3>
+            <p>One-year certificate or AAS. Aligned with Oregon Registry Online standards. Practicum hours at our on-campus child development center.</p>
+            <a class="more" href="#">Program details →</a>
+        </div>
+        <div class="program">
+            <span class="badge">Transfer</span>
+            <h3>Pre-Engineering</h3>
+            <p>First two years of an ABET-accredited engineering degree. Strong in calculus, physics, and engineering mechanics with small class sizes.</p>
+            <a class="more" href="#">Program details →</a>
+        </div>
+    </div>
+</section>
+
+<section class="content alt-section" id="admissions">
+    <div style="max-width: 1180px; margin: 0 auto;">
+        <h2>Important dates</h2>
+        <p class="section-lede">Mark your calendar for the upcoming term.</p>
+        <div class="dates">
+            <div class="date-card">
+                <div class="when">May 1, 2026</div>
+                <div class="what">Priority FAFSA Deadline</div>
+                <div class="desc">For maximum financial aid consideration for Fall 2026.</div>
+            </div>
+            <div class="date-card">
+                <div class="when">June 15, 2026</div>
+                <div class="what">Fall Registration Opens</div>
+                <div class="desc">Continuing students can register for fall classes.</div>
+            </div>
+            <div class="date-card">
+                <div class="when">September 21, 2026</div>
+                <div class="what">First Day of Fall Term</div>
+                <div class="desc">Welcome week activities run September 14–18.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content" id="about">
+    <h2>Why Blue River?</h2>
+    <p class="section-lede">
+        We're a community first — small classes (16:1 student-to-faculty ratio),
+        practical advising, and tuition that's a fraction of a four-year university.
+    </p>
+    <div class="programs">
+        <div class="program">
+            <h3>$132/credit</h3>
+            <p>In-state tuition for 2025–2026 — about a third of Oregon's public university rate. Most students complete an associate degree for under $9,000 total.</p>
+        </div>
+        <div class="program">
+            <h3>87% job placement</h3>
+            <p>Among graduates of career-technical programs within 12 months of completion. Over 240 regional employers partner with our programs.</p>
+        </div>
+        <div class="program">
+            <h3>3 campuses + online</h3>
+            <p>Main campus in Cascadia, plus satellite campuses in Riverside and Maple Grove. Half of all credit courses are available fully online.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-strip">
+    <h2>Have questions? We've got answers.</h2>
+    <p>Talk to an advisor, schedule a campus tour, or chat with us right now.</p>
+    <a href="#" class="btn btn-primary" onclick="if(window.openConexEDChatbot){window.openConexEDChatbot();return false;}">Chat with us</a>
+</section>
+
+<footer id="contact">
+    <div class="footer-inner">
+        <div>
+            <h4>Blue River Community College</h4>
+            <p style="margin: 0 0 8px;">2400 Riverbend Drive<br>Cascadia, OR 97401</p>
+            <p style="margin: 0;">(541) 555-0140<br><a href="mailto:info@blueriver.edu">info@blueriver.edu</a></p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Apply</a></li>
+                <li><a href="#">Tuition</a></li>
+                <li><a href="#">Financial Aid</a></li>
+                <li><a href="#">Course Catalog</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#">Library</a></li>
+                <li><a href="#">Tutoring Center</a></li>
+                <li><a href="#">Career Services</a></li>
+                <li><a href="#">Disability Services</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">News &amp; Events</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-meta">
+        <span>© 2026 Blue River Community College. An equal-opportunity institution.</span>
+        <span>Accreditation · Privacy · Title IX · Accessibility</span>
+    </div>
+</footer>
+
+<script src="https://chatbot.dev.craniumcafe.com/?d=centralaz"></script>
+    
+</body>
+</html>
